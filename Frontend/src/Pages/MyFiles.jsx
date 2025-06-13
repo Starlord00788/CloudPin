@@ -9,7 +9,7 @@ const MyFiles = () => {
 
   const fetchFiles = async () => {
     try {
-      const res = await API.get("/v1/files/my");
+      const res = await API.get("/files/my");
       setFiles(res.data.files || []);
     } catch (err) {
       console.error("Failed to fetch files");
