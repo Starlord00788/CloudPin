@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://cloudpin-backend.onrender.com/api", // change to your backend base
+  baseURL: "https://cloudpin-backend.onrender.com/api/v1", // change to your backend base
 });
 
 API.interceptors.request.use((config) => {
