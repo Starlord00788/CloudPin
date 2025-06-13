@@ -10,7 +10,7 @@ const VerifyOtp = () => {
 
   const handleVerify = async () => {
     try {
-      await axios.post("http://localhost:8000/api/v1/users/verify-otp", { email, otp });
+      await axios.post("https://cloudpin-backend.onrender.com/users/verify-otp", { email, otp });
       alert("OTP verified!");
       navigate("/login");
     } catch (err) {
