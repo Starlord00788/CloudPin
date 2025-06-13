@@ -13,7 +13,7 @@ const FileViewer = () => {
 
   const fetchFile = async () => {
     try {
-      const res = await API.get(`/v1/files/${shortId}`);
+      const res = await API.get(`/files/${shortId}`);
       setFile(res.data.file);
     } catch (err) {
       setError("This file link is invalid or has been removed.");
