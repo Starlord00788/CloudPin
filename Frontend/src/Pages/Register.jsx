@@ -21,7 +21,7 @@ const Register = () => {
     if (!form.username.trim()) errors.username = "Username is required.";
     if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
       errors.email = "Invalid email.";
-    if (!form.password.match(/^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/))
+    if (!form.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/))
       errors.password =
         "Password must be at least 6 characters with 1 uppercase and 1 number.";
     if (!avatar) errors.avatar = "Please upload a profile image.";
@@ -41,35 +41,36 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setServerError("");
+  e.preventDefault();
+  setLoading(true);
+  setServerError("");
 
-    const errors = validate();
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors);
-      setLoading(false);
-      return;
-    }
+  const errors = validate();
+  if (Object.keys(errors).length > 0) {
+    setFieldErrors(errors);
+    setLoading(false);
+    return;
+  }
 
-    const formData = new FormData();
-    Object.entries(form).forEach(([key, value]) =>
-      formData.append(key, value)
-    );
-    formData.append("avatar", avatar);
+  const formData = new FormData();
+  Object.entries(form).forEach(([key, value]) => formData.append(key, value));
+  formData.append("avatar", avatar);
 
-    try {
-      await axios.post("https://cloudpin-backend.onrender.com/users/register", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      navigate("/login");
-    } catch (err) {
-      const msg = err.response?.data?.message || "Registration failed.";
-      setServerError(msg);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await axios.post("http://localhost:8000/api/v1/users/register", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    const email = res.data?.email || form.email;
+    navigate("/verify-otp", { state: { email } }); // 
+  } catch (err) {
+    const msg = err.response?.data?.message || "Registration failed.";
+    setServerError(msg);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
