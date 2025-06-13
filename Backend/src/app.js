@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_Origin,
+  origin: process.env.CORS_ORIGIN,
   credentials: true,
 }));
 app.use(express.json({ limit: "16kb" }));
