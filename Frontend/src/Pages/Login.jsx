@@ -41,7 +41,7 @@ const Login = () => {
     }
 
     try {
-      const res = await API.post("/v1/users/login", form);
+      const res = await API.post("/users/login", form);
       const token = res.data.data.accessToken;
 
       if (!token) throw new Error("Access token missing in response");
