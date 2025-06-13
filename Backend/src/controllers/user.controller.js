@@ -90,14 +90,19 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(500, "Something went wrong while registering user ");
   }
 
-  const response = new ApiResponse(
-    200,
-    createdUser,
-    "User registered Successfully",
-  );
-  console.log("Response:", response);
+  // const response = new ApiResponse(
+  //   200,
+  //   createdUser,
+  //   "User registered Successfully",
+  // );
+  // console.log("Response:", response);
 
-  return res.status(201).json(response);
+  res.status(201).json({
+  success: true,
+  message: "Registered! Please verify your email.",
+  email: createdUser.email,
+});
+
 });
 
 const loginUser = asyncHandler(async (req, res) => {
