@@ -7,7 +7,7 @@ import MyFiles from "./Pages/MyFiles";
 import FileViewer from "./Pages/FileViewer";
 import Footer from "./components/Footer";
 import PrivateRoute from "../src/components/privateRoute.jsx";
-
+import VerifyOtp from "../src/components/VerifyOtp.jsx";
 function App() {
   return (
     <Router>
@@ -46,6 +46,8 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          <Route path="/verify-otp" element={<VerifyOtp/>} />
         </Routes>
       </div>
       
