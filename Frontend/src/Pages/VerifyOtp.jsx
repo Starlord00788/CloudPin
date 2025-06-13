@@ -12,7 +12,7 @@ const VerifyOtp = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await API.post("/v1/users/verify-otp", { email, otp });
+      const res = await API.post("/users/verify-otp", { email, otp });
       alert("OTP verified successfully!");
       navigate("/login");
     } catch (err) {
