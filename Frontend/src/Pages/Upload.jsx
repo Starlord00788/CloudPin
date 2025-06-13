@@ -33,7 +33,7 @@ const Upload = () => {
 
   try {
     setUploading(true);
-    const res = await API.post("/v1/files/upload", formData, {
+    const res = await API.post("/files/upload", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     setDownloadUrl(res.data.downloadUrl);
