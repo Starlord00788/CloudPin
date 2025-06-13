@@ -59,7 +59,7 @@ const Register = () => {
     formData.append("avatar", avatar);
 
     try {
-      await axios.post("http://localhost:8000/api/v1/users/register", formData, {
+      await axios.post("https://cloudpin-backend.onrender.com/users/register", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       navigate("/login");
