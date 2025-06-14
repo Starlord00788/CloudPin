@@ -10,7 +10,7 @@ import PrivateRoute from "../src/components/privateRoute.jsx";
 import VerifyOtp from "../src/components/VerifyOtp.jsx";
 function App() {
   return (
-    <Router>
+    <>
       <Navbar />
       <div className="p-4 max-w-4xl mx-auto min-h-[calc(100vh-160px)]">
         <Routes>
@@ -51,7 +51,7 @@ function App() {
         </Routes>
       </div>
       
-    </Router>
+    </>
   );
 }
 
