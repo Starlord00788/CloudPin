@@ -7,6 +7,8 @@ services:
     buildFilter:
       paths:
         - Frontend/**
+        - Frontend/**
+        - render.yaml
     repoPath: Frontend
     routes:
       - type: rewrite
