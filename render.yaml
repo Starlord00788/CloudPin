@@ -34,5 +34,5 @@ services:
       - key: CORS_ORIGIN
         value: https://cloudpin-frontend.onrender.com
       - key: MONGODB_URI
-        value: mongodb+srv://palashsinghal000:palash123@cluster0.yff5vru.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        value: your-mongodb-connection-string
 
